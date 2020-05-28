@@ -10,30 +10,30 @@ const Chat = (props) => {
     })
   }
   const templateMessage = (message) => {
-    return {
+    return (
       `
       <p>${props.user.username}: ${message}</p>
       `
+    )
   }
-}
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-}
-return (
-  <div className="container-chat">
-    <div id="content-messages" className='content-messages'>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id dignissimos fugiat numquam placeat atque architecto voluptate saepe distinctio molestias sint impedit in cupiditate tenetur, obcaecati doloribus esse laudantium, fuga culpa?</p>
-    </div>
-    <form className="form-container" onSubmit={handleSubmit}>
-      <span htmlFor="">{props.user.username || 'Anonimo'}</span>
-      <div className="form-item">
-        <input type="text" name='message' placeholder='Ingresa el mensaje' onChange={handleChange} />
-        <button type='submit'> > </button>
+  }
+  return (
+    <div className="container-chat">
+      <div id="content-messages" className='content-messages'>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id dignissimos fugiat numquam placeat atque architecto voluptate saepe distinctio molestias sint impedit in cupiditate tenetur, obcaecati doloribus esse laudantium, fuga culpa?</p>
       </div>
-    </form>
-  </div>
-)
+      <form className="form-container" onSubmit={handleSubmit}>
+        <span htmlFor="">{props.user.username || 'Anonimo'}</span>
+        <div className="form-item">
+          <input type="text" name='message' placeholder='Ingresa el mensaje' onChange={handleChange} />
+          <button type='submit'> > </button>
+        </div>
+      </form>
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
