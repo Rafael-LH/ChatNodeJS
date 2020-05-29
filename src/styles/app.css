@@ -42,7 +42,7 @@
 
 /* Styles chat */
 .container-chat{
-  width: 50%;
+  width: 70%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,16 @@
 }
 .content-messages{
   height: 90vh;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   overflow: scroll;
+}
+.content-messages .messages{
+  text-align: center;
+}
+.content-messages .messages p{ 
+  width: 100%;
 }
 .form-container{
   height: 10vh;
@@ -68,13 +77,16 @@
   justify-content: center;
   align-items: center;
 }
-.form-item input{
+.form-item input:nth-child(1){
+  width: 30%;
+  padding: 10px; 
+}
+.form-item input:nth-child(2){
   width: 90%;
   padding: 10px; 
 }
 .form-item button{
-  width: 45px;
-  height: 45px;
+  padding: 7px 15px 10px;
   border: none;
   background: transparent;
   cursor: pointer;

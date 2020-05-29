@@ -11,7 +11,10 @@ connect(server)
 const files = path.resolve(__dirname, '../dist')
 app.use(express.static(files))
 
-app.get('*', (req, res) => {
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.get('/', (req, res) => {
   res.sendFile('index.html', { root: 'dist' })
 })
 
