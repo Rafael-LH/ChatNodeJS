@@ -1,18 +1,22 @@
 const express = require('express');
 const app = express();
-
 const response = require('../network/response')
-const { socket } = require('../../server/socket')
-const message = []
-app.post('/', async (req, res) => {
+const multer = require('multer');
+
+const upload = multer({
+  dest: 'public/files'
+}).any();
+
+app.post('/', upload, async (req, res) => {
   try {
-    message.push(req.body);
-    socket.io.emit('message', message);
-    response.success(req, res, 'Save Message', req.body, 201);
+    console.log(req.files);
+    // message.push(req.body);
+    response.success(req, res, 'Save Message', 'req.body', 201);
   } catch (error) {
     response.error(req, res, 'Ha ocurrido algun error,por favor intenta más tarde', 500)
   }
 })
+
 app.get('/', async (req, res) => {
   try {
     response.success(req, res, 'Get Messages', message, 201);
