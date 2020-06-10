@@ -21,8 +21,6 @@ app.get('/', (req, res) => {
 const router = require('./network/routes');
 router(app);
 
-app.use(router)
-
 server.listen(PORT, () => {
   console.log(`La Aplicacion esta escuchando en http://localhost:${PORT}`);
 })

@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 
 const response = require('../network/response')
 const { socket } = require('../../server/socket')
 const message = []
-app.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     message.push(req.body);
     socket.io.emit('message', message);
@@ -13,11 +13,11 @@ app.post('/', async (req, res) => {
     response.error(req, res, 'Ha ocurrido algun error,por favor intenta más tarde', 500)
   }
 })
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     response.success(req, res, 'Get Messages', message, 201);
   } catch (error) {
     response.error(req, res, 'Ha ocurrido algun error,por favor intenta más tarde', 500)
   }
 })
-module.exports = app
+module.exports = router
